@@ -1,14 +1,24 @@
 version: '3.9'
 services:
+  # docker build -t <image-name:tag-name> . --build-arg FILE=<backup-file-name> --build-arg DBNAME=<database-name>
   postgres:
     container_name: postgres_int_emp_container
-    image: postgres
+    build:
+      context: .
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ifpb
       PGDATA: /data/postgres
+
+      # Restore
+      PATH_RESTORE_FILE: /common/
+      RESTORE_FILE: northwind_erp.backup
+      # DLL
+      PATH_DLL_FILE: /northwind/app/
+      DLL_FILE: create_northwind_script.sql
+
     volumes:
-      - postgres-data:/data/postgres
+      - postgres-int-emp-data:/data/postgres
     ports:
       - "6000:5432"
     networks:
@@ -23,7 +33,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ifpb
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - pgadmin-int-emp-data:/var/lib/pgadmin
     ports:
       - "5050:80"
     networks:
@@ -36,5 +46,5 @@ networks:
   postgres:
 
 volumes:
-  postgres-data:
-  pgadmin-data:
+  postgres-int-emp-data:
+  pgadmin-int-emp-data:

@@ -1,0 +1,6 @@
+# Exclude all files from all extensions
+*.*
+# Except this ones
+!*.backup
+!*.sql
+!*.sh
