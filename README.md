@@ -39,6 +39,8 @@ C:/Program Files/pentaho
 `JAVA_HOME`| `C:\Program Files\Java\jre1.8.0_351`
 `KETTLE_HOME`| `C:\Program Files\pentaho\KETTLE_HOME`
 
+Após isso, dê permissões de **administrador** para o `Spoon.bat` e o execute para abrir o pentaho.
+
 ## Iniciando via Script
 Mude a variável de ambiente `PATH_DLL_FILE` dentro de `docker-compose.yml` para mudar qual script irá gerar as *dimensões* e *fatos*:
 
